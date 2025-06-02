@@ -35,13 +35,13 @@ jobs:
       - name: Convert images to WebP
         run: |
           mkdir -p dist/images
-          sharp images/Hero_Desktop.jpg --resize=1905,886 --output=dist/images/Hero_Desktop.webp --quality=80 --webp
-          sharp images/Hero_Tablet.jpg --resize=934,749 --output=dist/images/Hero_Tablet.webp --quality=80 --webp
-          sharp images/Hero_Mobile.jpg --resize=400,400 --output=dist/images/Hero_Mobile.webp --quality=80 --webp
-          sharp images/vr1.jpg --resize=200,200 --output=dist/images/vr1.webp --quality=80 --webp
-          sharp images/vr2.jpg --resize=200,200 --output=dist/images/vr2.webp --quality=80 --webp
-          sharp images/vr3.jpg --resize=200,200 --output=dist/images/vr3.webp --quality=80 --webp
-          sharp images/menu_icon.png --resize=29,20 --output=dist/images/menu_icon.webp --quality=80 --webp
+          npx sharp images/Hero_Desktop.jpg --resize=1905,886 --output=dist/images/Hero_Desktop.webp --quality=80 --webp
+          npx sharp images/Hero_Tablet.jpg --resize=934,749 --output=dist/images/Hero_Tablet.webp --quality=80 --webp
+          npx sharp images/Hero_Mobile.jpg --resize=400,400 --output=dist/images/Hero_Mobile.webp --quality=80 --webp
+          npx sharp images/vr1.jpg --resize=200,200 --output=dist/images/vr1.webp --quality=80 --webp
+          npx sharp images/vr2.jpg --resize=200,200 --output=dist/images/vr2.webp --quality=80 --webp
+          npx sharp images/vr3.jpg --resize=200,200 --output=dist/images/vr3.webp --quality=80 --webp
+          npx sharp images/menu_icon.png --resize=29,20 --output=dist/images/menu_icon.webp --quality=80 --webp
 
       - name: Minify CSS
         run: |
