@@ -44,12 +44,7 @@
 
 ### https://pagespeed.web.dev/ 측정 결과
 
-- Mobile
-  ![초기 측정 값](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
-
-- Desktop
-  ![초기 측정 값](https://github.com/user-attachments/assets/61867011-a33d-4ed6-8da8-97a791bca587)
-
+![초기 측정 값](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
   
 
 ### 예측되는 문제 사항
@@ -93,7 +88,7 @@
 
 - 초기 랜더링 속도개선을 위한 비동기 로딩 추가
 - 필수 랜더링 요소를 제외한 스크립트 defer 추가
-- CSS preload+onload 형식으로 변경
+- 폰트 파일을 로컬에서 직접 제공하도록 변경 
 
 
  
