@@ -35,6 +35,7 @@ jobs:
           cp index.html dist/
           cp -r images dist/images
           cp -r css/styles.css dist/assets/
+          cp -r css/fonts dist/assets/fonts
           cp -r js/*.js dist/assets/
 
       - name: Convert images to WebP
