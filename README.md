@@ -16,6 +16,7 @@
             run: |
               imagemin images/*.{png,jpg,jpeg} --plugin=webp --out-dir=dist/images
     ```
+  - (추가) imagemin 만으로는 해상도 조절이 안되서, sharp 로 라이브러리 변경
 
   - cleancss: *.min.css 파일로 압축하는 라이브러리
     ```yml
