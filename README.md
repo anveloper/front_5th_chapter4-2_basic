@@ -44,8 +44,13 @@
 
 ### https://pagespeed.web.dev/ 측정 결과
 
-![초기 측정 값](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
-  
+- Mobile
+  ![초기 측정 값](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
+
+- Desktop
+  ![Frame 102](https://github.com/user-attachments/assets/d5d2b1dc-f54f-444a-a2a8-6aa44df0a7e5)
+
+
 
 ### 예측되는 문제 사항
 
