@@ -10,9 +10,8 @@
     <meta name="robots" content="index, follow" />
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Heebo:300,400,600,700&display=swap" rel="stylesheet" /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" /></noscript>
 
     <!-- <link rel="stylesheet" href="/front_5th_chapter4-2_basic/assets/styles.min.css" /> -->
     <link rel="preload" href="/front_5th_chapter4-2_basic/assets/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -91,7 +90,7 @@
       <!-- <img class="tablet" src="images/Hero_Tablet.jpg" /> -->
       <picture>
         <source srcset="images/Hero_Desktop.webp" type="image/webp" />
-        <img class="desktop" src="images/Hero_Desktop.jpg" loading="eager" width="1905" height="886" alt="hero-desktop-image" />
+        <img class="desktop" src="images/Hero_Desktop.jpg" loading="eager" width="1920" height="880" alt="hero-desktop-image" />
       </picture>
       <picture>
         <source srcset="images/Hero_Mobile.webp" type="image/webp" />
