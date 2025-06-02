@@ -85,13 +85,8 @@
       <picture>
         <source srcset="images/Hero_Mobile.webp" type="image/webp" media="(max-width: 576px)" />
         <source srcset="images/Hero_Tablet.webp" type="image/webp" media="(max-width: 960px)" />
-        <source srcset="images/Hero_Desktop.webp" type="image/webp" />
-
-        <source srcset="images/Hero_Mobile.jpg" media="(max-width: 576px)" />
-        <source srcset="images/Hero_Tablet.jpg" media="(max-width: 960px)" />
-        <source srcset="images/Hero_Desktop.jpg" />
-
-        <img src="images/Hero_Desktop.jpg" style="width: 100%; height: auto" alt="hero image" loading="eager" />
+        <source srcset="images/Hero_Desktop.webp" type="image/webp" media="(min-width: 961px)" />
+        <img class="desktop" src="images/Hero_Desktop.webp" alt="hero image" loading="eager" />
       </picture>
 
       <div class="hero-content">
