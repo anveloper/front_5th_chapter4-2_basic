@@ -43,11 +43,11 @@ jobs:
           mkdir -p dist/images
           cwebp -resize 1905 886 -q 80 images/Hero_Desktop.jpg -o dist/images/Hero_Desktop.webp
           cwebp -resize 934 749 -q 80 images/Hero_Tablet.jpg -o dist/images/Hero_Tablet.webp
-          cwebp -resize 400 400 -q 80 images/Hero_Mobile.jpg -o dist/images/Hero_Mobile.webp
+          cwebp -resize 618 618 -q 80 images/Hero_Mobile.jpg -o dist/images/Hero_Mobile.webp
           cwebp -resize 200 200 -q 80 images/vr1.jpg -o dist/images/vr1.webp
           cwebp -resize 200 200 -q 80 images/vr2.jpg -o dist/images/vr2.webp
           cwebp -resize 200 200 -q 80 images/vr3.jpg -o dist/images/vr3.webp
-          cwebp -resize 29 20 -q 80 images/menu_icon.png -o dist/images/menu_icon.webp
+          cwebp -resize 36 26 -q 80 images/menu_icon.png -o dist/images/menu_icon.webp
 
       - name: Minify CSS
         run: |
