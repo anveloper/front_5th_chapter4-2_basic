@@ -43,6 +43,7 @@
         });
       });
     </script>
+    <link rel="preload" as="image" href="images/Hero_Mobile.webp" type="image/webp" media="(max-width: 576px)" />
   </head>
 
   <body>
@@ -83,11 +84,14 @@
       <!-- <img class="tablet" src="images/Hero_Tablet.jpg" /> -->
       <picture>
         <source srcset="images/Hero_Mobile.webp" type="image/webp" media="(max-width: 576px)" />
-        <img class="mobile" src="images/Hero_Mobile.jpg" width="618" height="618" alt="hero-mobile-image" media="(max-width: 576px)" />
         <source srcset="images/Hero_Tablet.webp" type="image/webp" media="(max-width: 960px)" />
-        <img class="tablet" src="images/Hero_Tablet.jpg" width="934" height="749" alt="hero-tablet-image" media="(max-width: 960px)" />
         <source srcset="images/Hero_Desktop.webp" type="image/webp" />
-        <img class="desktop" src="images/Hero_Desktop.jpg" width="1905" height="886" alt="hero-desktop-image" />
+
+        <source srcset="images/Hero_Mobile.jpg" media="(max-width: 576px)" />
+        <source srcset="images/Hero_Tablet.jpg" media="(max-width: 960px)" />
+        <source srcset="images/Hero_Desktop.jpg" />
+
+        <img src="images/Hero_Desktop.jpg" style="width: 100%; height: auto" alt="hero image" loading="eager" />
       </picture>
 
       <div class="hero-content">
