@@ -223,7 +223,7 @@ section.best-sellers .product-slider .product {
   cursor: pointer;
 }
 
-section.best-sellers .product-slider .product img {
+section.best-sellers .product-slider .product picture {
   max-width: 40%;
 }
 

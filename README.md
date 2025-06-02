@@ -32,7 +32,9 @@
               rm dist/assets/main.js dist/assets/products.js
     ```
 
-- 
+- 초기 랜더링 속도개선을 위한 비동기 로딩 추가
+
+  - 필수 랜더링 요소를 제외한 스크립트 
 
 
  
