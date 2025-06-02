@@ -82,16 +82,12 @@
       <!-- <img class="mobile" src="images/Hero_Mobile.jpg" /> -->
       <!-- <img class="tablet" src="images/Hero_Tablet.jpg" /> -->
       <picture>
+        <source srcset="images/Hero_Mobile.webp" type="image/webp" media="(max-width: 576px)" />
+        <img class="mobile" src="images/Hero_Mobile.jpg" width="400" height="400" alt="hero-mobile-image" media="(max-width: 576px)" />
+        <source srcset="images/Hero_Tablet.webp" type="image/webp" media="(max-width: 960px)" />
+        <img class="tablet" src="images/Hero_Tablet.jpg" width="934" height="749" alt="hero-tablet-image" media="(max-width: 960px)" />
         <source srcset="images/Hero_Desktop.webp" type="image/webp" />
-        <img class="desktop" src="images/Hero_Desktop.jpg" loading="eager" width="1920" height="880" alt="hero-desktop-image" />
-      </picture>
-      <picture>
-        <source srcset="images/Hero_Mobile.webp" type="image/webp" />
-        <img class="mobile" src="images/Hero_Mobile.jpg" loading="lazy" width="400" height="400" alt="hero-mobile-image" />
-      </picture>
-      <picture>
-        <source srcset="images/Hero_Tablet.webp" type="image/webp" />
-        <img class="tablet" src="images/Hero_Tablet.jpg" loading="lazy" width="934" height="749" alt="hero-tablet-image" />
+        <img class="desktop" src="images/Hero_Desktop.jpg" width="1905" height="886" alt="hero-desktop-image" />
       </picture>
 
       <div class="hero-content">
