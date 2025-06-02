@@ -22,7 +22,7 @@ jobs:
 
       - name: Install CLI tools
         run: |
-          npm install -g imagemin-cli imagemin-webp clean-css-cli terser
+          npm install -g sharp-cli clean-css-cli terser
 
       - name: Prepare dist folder
         run: |
@@ -34,7 +34,14 @@ jobs:
 
       - name: Convert images to WebP
         run: |
-          imagemin images/*.{png,jpg,jpeg} --plugin=webp --out-dir=dist/images
+          mkdir -p dist/images
+          sharp images/Hero_Desktop.jpg -resize 1905 886 -toFormat webp -quality 80 -o dist/images/Hero_Desktop.webp
+          sharp images/Hero_Tablet.jpg -resize 934 749 -toFormat webp -quality 80 -o dist/images/Hero_Tablet.webp
+          sharp images/Hero_Mobile.jpg -resize 400 400 -toFormat webp -quality 80 -o dist/images/Hero_Mobile.webp
+          sharp images/vr1.jpg -resize 200 200 -toFormat webp -quality 80 -o dist/images/vr1.webp
+          sharp images/vr2.jpg -resize 200 200 -toFormat webp -quality 80 -o dist/images/vr2.webp
+          sharp images/vr3.jpg -resize 200 200 -toFormat webp -quality 80 -o dist/images/vr3.webp
+          sharp images/menu_icon.png -resize 29 20 -toFormat webp -quality 80 -o dist/images/menu_icon.webp
 
       - name: Minify CSS
         run: |
