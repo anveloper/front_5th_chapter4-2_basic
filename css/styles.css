@@ -224,7 +224,11 @@ section.best-sellers .product-slider .product {
 }
 
 section.best-sellers .product-slider .product picture {
-  max-width: 40%;
+  max-width: 200px;
+  max-height: 200px;
+  & > img {
+    object-fit: contain;
+  }
 }
 
 section.best-sellers .product-slider .product .product-picture {
