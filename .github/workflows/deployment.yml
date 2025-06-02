@@ -1,19 +1,61 @@
-name: Deploy to GitHub Pages
+name: Deploy static site with optimized assets
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "*.md"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install CLI tools
+        run: |
+          npm install -g imagemin-cli imagemin-webp clean-css-cli terser
+
+      - name: Prepare dist folder
+        run: |
+          mkdir -p dist/assets
+          cp index.html dist/
+          cp -r images dist/images
+          cp -r css/styles.css dist/assets/
+          cp -r js/*.js dist/assets/
+
+      - name: Convert images to WebP
+        run: |
+          imagemin images/*.{png,jpg,jpeg} --plugin=webp --out-dir=dist/images
+
+      - name: Minify CSS
+        run: |
+          cleancss -o dist/assets/styles.min.css dist/assets/styles.css
+          rm dist/assets/styles.css
+
+      - name: Minify JS
+        run: |
+          terser dist/assets/main.js -o dist/assets/main.min.js --compress --mangle
+          terser dist/assets/products.js -o dist/assets/products.min.js --compress --mangle
+          rm dist/assets/main.js dist/assets/products.js
+
+      - name: Update HTML references
+        run: |
+          sed -i 's/css\/styles\.css/assets\/styles.min.css/g' dist/index.html
+          sed -i 's/js\/main\.js/assets\/main.min.js/g' dist/index.html
+          sed -i 's/js\/products\.js/assets\/products.min.js/g' dist/index.html
+          sed -i 's/\.\(png\|jpg\|jpeg\)/.webp/g' dist/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./dist
