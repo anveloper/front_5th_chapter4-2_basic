@@ -123,7 +123,7 @@
   - *.min.css, *.min.js 파일로 소스 압축
   - main 브랜치는 원본 소스만 유지
   
-    ![Frame 105](https://github.com/user-attachments/assets/d73f7f72-1b40-4cc5-8cc1-5da3ace05e7a)
+    ![Frame 105 (1)](https://github.com/user-attachments/assets/47d312e3-58a2-4b62-a55b-78416823ed71)
 
 - 초기 랜더링 속도개선을 위한 비동기 로딩 추가
 - 필수 랜더링 요소를 제외한 스크립트 defer 추가
