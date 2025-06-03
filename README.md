@@ -188,10 +188,10 @@
 ### 개선 후 PageSpeed 측정 결과
 
 - Desktop
-  ![desktop a](https://github.com/user-attachments/assets/c398057c-1eaf-47a1-8108-e22914a50ad7)
- 
+  ![desktop a](https://github.com/user-attachments/assets/dfbd4720-44b0-4a22-bde7-b7a0703ad603)
+
 - Mobile
-  ![mobile a](https://github.com/user-attachments/assets/88be69ae-cf32-4e02-b9ce-2f4493388a18)
+  ![mobile a](https://github.com/user-attachments/assets/4a8af1f1-dac2-442f-9ed2-3d42a5037c15)
 
 ## 개선 결과
 
@@ -200,19 +200,19 @@
 - Desktop
   | 항목                                 | 개선 전  | 개선 후        | 변화                             |
   | ---------------------------------- | ----- | ----------- | ------------------------------ |
-  | **성능 점수**                          | 90점   | ✅ **99점**   | ▲ +9점 향상                       |
-  | **First Contentful Paint (FCP)**   | 0.6초  | ✅ **0.2초**  | 매우 빠르게 개선됨                     |
-  | **Largest Contentful Paint (LCP)** | 2.0초  | ✅ **0.9초**  | 핵심 지표 절반 이하로 감소                |
+  | **성능 점수**                          | 90점   | ✅ **100점**   | ▲ +10점 향상                       |
+  | **First Contentful Paint (FCP)**   | 0.6초  | ✅ **0.3초**  | 매우 빠르게 개선됨                     |
+  | **Largest Contentful Paint (LCP)** | 2.0초  | ✅ **0.6초**  | 핵심 지표 절반 이하로 감소                |
   | **Total Blocking Time (TBT)**      | 70ms  | ✅ **0ms**   | 자바스크립트 최적화 성공                  |
-  | **Speed Index**                    | 0.6초  | ⚠️ **1.0초** | 체감 시각적 렌더링 속도는 약간 늦어짐          |
+  | **Speed Index**                    | 0.6초  | ✅ **0.9초** | 체감 시각적 렌더링 속도는 약간 늦어짐          |
   | **Cumulative Layout Shift (CLS)**  | 0.011 | ✅ **0.014** | 안정적 (오히려 LCP 관련 개선 영향으로 더 안정됨) |
 
 - Mobile
   | 항목                                 | 개선 전  | 개선 후    | 비고                                |
   | ---------------------------------- | ----- | ------- | --------------------------------- |
-  | **성능 점수**                          | 54점   | ✅ 91점   | ▲ +37점 향상                         |
+  | **성능 점수**                          | 54점   | ✅ 93점   | ▲ +39점 향상                         |
   | **FCP** (First Contentful Paint)   | 2.4초  | ✅ 1.2초  | 초기 콘텐츠 도달 시간 단축                   |
-  | **LCP** (Largest Contentful Paint) | 5.8초  | ✅ 3.2초  | 주 콘텐츠 렌더링 시간 크게 개선                |
+  | **LCP** (Largest Contentful Paint) | 5.8초  | ✅ 2.9초  | 주 콘텐츠 렌더링 시간 크게 개선                |
   | **CLS** (Cumulative Layout Shift)  | 0.405 | ✅ 0.018 | 레이아웃 안정성 확보                       |
   | **Total Blocking Time**            | 170ms | ✅ 0ms   | 스크립트 블로킹 제거                       |
   | **Speed Index**                    | 2.4초  | ⚠️ 3.8초 | 시각적 로딩 체감 속도는 다소 낮아짐 (대신 안정성 확보됨) |
@@ -221,8 +221,8 @@
 
 ## 분석 요약
 
-- 데스크탑 환경에서의 성능은 거의 최대치 수준으로 개선이 되었음
-- 모바일 환경도 54점에서 91점으로 개선이 되었지만, LCP는 더 개선할 요소가 있는것으로 보임
+- 데스크탑 환경에서의 성능은 최대치 수준으로 개선이 되었음
+- 모바일 환경도 54점에서 93점으로 개선이 되었지만, LCP는 더 개선할 요소가 있는것으로 보임
 - 항목중 speed index 값이 증가되었다고 측정되었는데, 동적으로 실행되는 쿠키 허용 팝업이 개선전 상태에선 랜더링이 안되는 오류 상태로 측정 왜곡이 발생한 것이 아닌가 생각됨
 - 프레임워크의 빌드 과정처럼 *.min.js 로 압축하는 과정을 deploy에서 수행했는데, 코드량이 많지 않아 큰 차이를 보이지는 않음
 - 마찬가지로 main 브랜치의 원본 소스를 유지하기 위해 webp 파일도 deploy과정에서 변환하는데, 압축률을 80정도로 진행함
