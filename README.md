@@ -4,6 +4,19 @@
 
 # 성능 개선 보고서
 
+- 개선 이유
+  - [개선 전 상태](#개선-전-상태)
+  - [예측되는 문제 사항](#예측되는-문제-사항)
+- 개선 방법
+  - [코드상 주요 개선 조치](#코드상-주요-개선-조치)
+  - [배포간 주요 개선 조치](#배포간-주요-개선-조치)
+- 개선 후 향상된 지표
+  - [개선 후 상태](#개선-후-상태)
+  - [개선 결과](#개선-결과)
+- 기타
+  - [분석 요약](#분석-요약)
+  - [회고 및 과제 피드백](#회고-및-과제-피드백)
+
 ## 개선 전 상태
 
 ### 🎯 Lighthouse 점수
@@ -22,34 +35,14 @@
 | INP | Interaction to Next Paint | N/A | 🟢 |
 | CLS | Cumulative Layout Shift | 0.011 | 🟢 |
 
-### 📝 Core Web Vitals 기준값
-- **LCP (Largest Contentful Paint)**: 가장 큰 콘텐츠가 화면에 그려지는 시점 
-  - 🟢 Good: < 2.5s
-  - 🟠 Needs Improvement: < 4.0s
-  - 🔴 Poor: ≥ 4.0s
-
-- **INP (Interaction to Next Paint)**: 사용자 상호작용에 대한 전반적인 응답성
-  - 🟢 Good: < 200ms
-  - 🟠 Needs Improvement: < 500ms
-  - 🔴 Poor: ≥ 500ms
-
-- **CLS (Cumulative Layout Shift)**: 페이지 로드 중 예기치 않은 레이아웃 변경의 정도
-  - 🟢 Good: < 0.1
-  - 🟠 Needs Improvement: < 0.25
-  - 🔴 Poor: ≥ 0.25
-
-> 📅 측정 시간: 2025. 6. 2. 오후 8:04:35
-
 
 ### 개선 전 PageSpeed 측정 결과
-
-- Mobile
-  ![mobile b](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
 
 - Desktop
   ![desktop b](https://github.com/user-attachments/assets/d5d2b1dc-f54f-444a-a2a8-6aa44df0a7e5)
 
-
+- Mobile
+  ![mobile b](https://github.com/user-attachments/assets/900b3600-4117-49ce-b5c6-ca1f04440817)
 
 ### 예측되는 문제 사항
 
@@ -60,6 +53,30 @@
 - css 파일 중 외부에서 사용중인 폰트 파일이 전체 레이아웃의 변화에 영향을 줌
 
 ## 조치 사항
+
+
+### 코드상 주요 개선 조치
+
+- Desktop
+  | 조치                                                         | 설명                   |
+  | ---------------------------------------------------------- | -------------------- |
+  | **Hero 이미지에 `width`, `height`, `fetchpriority="high"` 추가** | LCP와 CLS 동시 개선       |
+  | **불필요 preload 제거 / 선택적 preload 전환**                        | 초기 네트워크 부하 경감        |
+  | **웹폰트 `font-display: swap` 설정**                            | 초기 렌더링 블로킹 제거        |
+  | **JS 실행 블로킹 감소 / GTM 최적화**                                 | TBT 0ms로 개선          |
+  | **이미지 크기 및 압축 재조정**                                        | 데스크탑 기준에서도 최적 크기만 전달 |
+
+- Mobile
+  | 조치 항목                 | 내용                                                                      |
+  | --------------------- | ----------------------------------------------------------------------- |
+  | **Hero 이미지 구조 개선**    | `<picture>` 사용 + `<img>`에 `width/height` 명시 + `fetchpriority="high"` 적용 |
+  | **이미지 리사이즈 및 용량 최적화** | WebP 사용, 모바일 전용 이미지 별도 분기, Squoosh 등으로 품질 70\~75 압축                     |
+  | **불필요 preload 제거**    | `<link rel="preload">` 조건부 분기 제거 또는 JS 로딩 전환                            |
+  | **CLS 발생 요소 정리**      | 폰트 로딩 및 이미지 공간 확보, 레이아웃 요소 크기 고정                                        |
+  | **스크립트 최적화**          | 사용하지 않는 GTM 제거 또는 지연 로딩 적용                                              |
+
+
+### 배포간 주요 개선 조치
 
 - 배포시에 이미지 파일을 `*.webp`로 변환
 - 배포시에 `*.js`, `*.css` 파일은 `*.min.js`, `*.min.css` 파일로 압축
@@ -166,34 +183,53 @@
 | LCP | Largest Contentful Paint | 2.49s | 🟢 |
 | INP | Interaction to Next Paint | N/A | 🟢 |
 | CLS | Cumulative Layout Shift | 0.561 | 🔴 |
-
-### 📝 Core Web Vitals 기준값
-- **LCP (Largest Contentful Paint)**: 가장 큰 콘텐츠가 화면에 그려지는 시점 
-  - 🟢 Good: < 2.5s
-  - 🟠 Needs Improvement: < 4.0s
-  - 🔴 Poor: ≥ 4.0s
-
-- **INP (Interaction to Next Paint)**: 사용자 상호작용에 대한 전반적인 응답성
-  - 🟢 Good: < 200ms
-  - 🟠 Needs Improvement: < 500ms
-  - 🔴 Poor: ≥ 500ms
-
-- **CLS (Cumulative Layout Shift)**: 페이지 로드 중 예기치 않은 레이아웃 변경의 정도
-  - 🟢 Good: < 0.1
-  - 🟠 Needs Improvement: < 0.25
-  - 🔴 Poor: ≥ 0.25
-
-> 📅 측정 시간: 2025. 6. 3. 오전 8:06:13
-
  
 ### 개선 후 PageSpeed 측정 결과
-
-- Mobile
-  ![mobile a](https://github.com/user-attachments/assets/88be69ae-cf32-4e02-b9ce-2f4493388a18)
 
 - Desktop
   ![desktop a](https://github.com/user-attachments/assets/c398057c-1eaf-47a1-8108-e22914a50ad7)
  
+- Mobile
+  ![mobile a](https://github.com/user-attachments/assets/88be69ae-cf32-4e02-b9ce-2f4493388a18)
+
 ## 개선 결과
 
-### 
+### 측정 요약
+
+- Desktop
+  | 항목                                 | 개선 전  | 개선 후        | 변화                             |
+  | ---------------------------------- | ----- | ----------- | ------------------------------ |
+  | **성능 점수**                          | 90점   | ✅ **99점**   | ▲ +9점 향상                       |
+  | **First Contentful Paint (FCP)**   | 0.6초  | ✅ **0.2초**  | 매우 빠르게 개선됨                     |
+  | **Largest Contentful Paint (LCP)** | 2.0초  | ✅ **0.9초**  | 핵심 지표 절반 이하로 감소                |
+  | **Total Blocking Time (TBT)**      | 70ms  | ✅ **0ms**   | 자바스크립트 최적화 성공                  |
+  | **Speed Index**                    | 0.6초  | ⚠️ **1.0초** | 체감 시각적 렌더링 속도는 약간 늦어짐          |
+  | **Cumulative Layout Shift (CLS)**  | 0.011 | ✅ **0.014** | 안정적 (오히려 LCP 관련 개선 영향으로 더 안정됨) |
+
+- Mobile
+  | 항목                                 | 개선 전  | 개선 후    | 비고                                |
+  | ---------------------------------- | ----- | ------- | --------------------------------- |
+  | **성능 점수**                          | 54점   | ✅ 91점   | ▲ +37점 향상                         |
+  | **FCP** (First Contentful Paint)   | 2.4초  | ✅ 1.2초  | 초기 콘텐츠 도달 시간 단축                   |
+  | **LCP** (Largest Contentful Paint) | 5.8초  | ✅ 3.2초  | 주 콘텐츠 렌더링 시간 크게 개선                |
+  | **CLS** (Cumulative Layout Shift)  | 0.405 | ✅ 0.018 | 레이아웃 안정성 확보                       |
+  | **Total Blocking Time**            | 170ms | ✅ 0ms   | 스크립트 블로킹 제거                       |
+  | **Speed Index**                    | 2.4초  | ⚠️ 3.8초 | 시각적 로딩 체감 속도는 다소 낮아짐 (대신 안정성 확보됨) |
+
+
+
+## 분석 요약
+
+- 데스크탑 환경에서의 성능은 거의 최대치 수준으로 개선이 되었음
+- 모바일 환경도 54점에서 91점으로 개선이 되었지만, LCP는 더 개선할 요소가 있는것으로 보임
+- 항목중 speed index 값이 증가되었다고 측정되었는데, 동적으로 실행되는 쿠키 허용 팝업이 개선전 상태에선 랜더링이 안되는 오류 상태로 측정 왜곡이 발생한 것이 아닌가 생각됨
+- 프레임워크의 빌드 과정처럼 *.min.js 로 압축하는 과정을 deploy에서 수행했는데, 코드량이 많지 않아 큰 차이를 보이지는 않음
+- 마찬가지로 main 브랜치의 원본 소스를 유지하기 위해 webp 파일도 deploy과정에서 변환하는데, 압축률을 80정도로 진행함
+- 이미지 변환 시 압축률을 더 줄여 speed index를 더 줄일수도 있지만, 이미지가 보기에 너무 압축되면 사용자 경험이 안좋아 질것으로 판단 80로 설정함
+
+## 회고 및 과제 피드백
+
+- 회사에서 Next.js 위주의 프레임 워크를 주로 작업을 하고있고, <Image/> 컴포넌트에서 최적화를 해주는 것을 주로 이용해왔습니다.
+- 성능 지표를 확인하며 어떻게 작업하면 수치적으로 얼마나 개선되는 지 확인 할 수 있는 경험이 좋았습니다.
+- 회사 솔루션 중 12년이 넘은 Vanilla JS로 구축된 프로젝트에 .tpl 이라는 파일 확장자로 페이지를 랜더링 해주는 부분이 있는데, 코드량이 방대하여 완벽한 개선은 시도하기 어려운 부분이 있었습니다.
+- 이번 과제를 통해 js나 css 로드 방식이라도 조금씩 개선해 나갈 수 있을 것 같다는 생각이 들었습니다.
